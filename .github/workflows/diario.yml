@@ -1,0 +1,35 @@
+name: Ejecutar análisis diario
+
+on:
+  schedule:
+    - cron: '0 13 * * *'  # Todos los días a las 13:00 UTC (7am CDMX)
+  workflow_dispatch:
+
+jobs:
+  correr-analisis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar Python y dependencias
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Instalar librerías requeridas
+        run: |
+          pip install -r requirements.txt
+          pip install pandas matplotlib seaborn
+
+      - name: Ejecutar notebook principal
+        run: |
+          pip install jupyter
+          jupyter nbconvert --to notebook --execute notebooks/"Terminal Mexico.ipynb" --output outputs/ejecucion_diaria.ipynb
+
+      - name: Subir resultado ejecutado
+        uses: actions/upload-artifact@v4
+        with:
+          name: notebook-diario
+          path: outputs/ejecucion_diaria.ipynb
