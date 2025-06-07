@@ -19,14 +19,12 @@ jobs:
           python-version: '3.12'
 
       - name: Instalar librerías requeridas
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Ejecutar notebook principal
         run: |
           pip install jupyter
           jupyter nbconvert --to notebook --execute notebooks/Notebook_analisis_underpromise.ipynb --output outputs/ejecucion_diaria.ipynb
-
 
       - name: Subir resultado ejecutado
         uses: actions/upload-artifact@v4
