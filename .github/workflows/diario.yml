@@ -26,7 +26,8 @@ jobs:
       - name: Ejecutar notebook principal
         run: |
           pip install jupyter
-          jupyter nbconvert --to notebook --execute notebooks/"Terminal Mexico.ipynb" --output outputs/ejecucion_diaria.ipynb
+          jupyter nbconvert --to notebook --execute notebooks/Notebook_analisis_underpromise.ipynb --output outputs/ejecucion_diaria.ipynb
+
 
       - name: Subir resultado ejecutado
         uses: actions/upload-artifact@v4
