@@ -21,7 +21,6 @@ jobs:
       - name: Instalar librerías requeridas
         run: |
           pip install -r requirements.txt
-          pip install pandas matplotlib seaborn
 
       - name: Ejecutar notebook principal
         run: |
