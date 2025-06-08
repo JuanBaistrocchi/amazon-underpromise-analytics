@@ -1,0 +1,7 @@
+Metric,Value
+Total Orders,10000
+Under-Promised Orders,3113
+Under-Promise Rate (%),31.13%
+Avg Promised Days,4.29
+Avg Actual Days,4.28
+Avg Delta Days,0.01
